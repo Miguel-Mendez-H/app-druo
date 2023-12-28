@@ -1,22 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ListBussiness from "./views/listBussiness";
+import CreateBusinessPanel from "./views/createBussiness";
 
-import LayoutPrincipal from '../src/layout/layout';
+import LayoutPrincipal from "../src/layout/layout";
 
 function App() {
   return (
-    <Router>
-    <div className="App">
-      <LayoutPrincipal>
-        {/* <Switch>
-          <Route exact path="/create-business" component={CreateBusiness} />
-          <Route exact path="/list-business" component={ListBusiness} />
-        </Switch> */}
-        <h1>2123123</h1>
-      </LayoutPrincipal>
-    </div>
-  </Router>
+    <BrowserRouter>
+      <div className="App">
+        <LayoutPrincipal>
+          <Routes>
+            <Route path="/negocios" element={<ListBussiness />} />
+            <Route path="/negocios/crear" element={<CreateBusinessPanel />} />
+          </Routes>
+        </LayoutPrincipal>
+      </div>
+    </BrowserRouter>
   );
 }
 

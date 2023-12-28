@@ -1,22 +1,13 @@
-import React, { Children } from 'react';
-import { Link } from 'react-router-dom';
+import Menu from "../components/menu";
 
 const LayoutPrincipal = (props) => {
+
   return (
-    <div className="layoutPrincipal">
-      <div className="sidebar">
-        <ul>
-          <li>
-            <Link to="/create-business">Create Business</Link>
-          </li>
-          <li>
-            <Link to="/list-business">List Business</Link>
-          </li>
-        </ul>
+    <div className="layoutPrincipal" style={{ display: 'flex' }}>
+      <div>
+        <Menu />
       </div>
-      <div className="layoutPrincipal__content">
-        {props.children}
-      </div>
+      <div className="layoutPrincipal__content" style={{ width:'100%', display:'flex', marginLeft:'1%'}}>{props.children}</div>
     </div>
   );
 };
