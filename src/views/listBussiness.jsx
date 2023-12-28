@@ -22,7 +22,7 @@ const ListBussiness = () => {
   return (
     <div>
       <h1 style={{ fontFamily: 'Lato', fontWeight: 'bold', fontSize: '16px', textAlign: 'left'}}>Ver negocios</h1>
-      {bussiness.length > 0 ? (
+      {bussiness.length > 0 ? ( 
         <>
         <div style={{width:"40%"}}>
         <table style={{ borderCollapse: 'collapse', width: '100%', tableLayout: 'fixed' }}>
