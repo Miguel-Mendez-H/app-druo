@@ -25,34 +25,34 @@ const ListBussiness = () => {
       {bussiness.length > 0 ? ( 
         <>
         <div style={{width:"40%"}}>
-        <table style={{ borderCollapse: 'collapse', width: '100%', tableLayout: 'fixed' }}>
-  <thead style={{ borderBottom: '1px solid #ccc' }}>
-    <tr>
-      <th style={{ width: '14px', padding: '8px', border: '1px solid #ccc', textAlign: 'left', fontSize: '14px'}}>
-        ID
-      </th>
-      <th style={{ width: '30px', padding: '8px', border: '1px solid #ccc', textAlign: 'left', fontSize: '14px' }}>
-        Nombre
-      </th>
-      <th style={{ width: '30px', padding: '8px', border: '1px solid #ccc', textAlign: 'left', fontSize: '14px' }}>
-        NIT
-      </th>
-      <th style={{ width: '30px', padding: '8px', border: '1px solid #ccc', textAlign: 'left', fontSize: '14px' }}>
-        Email
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    {bussiness.map((bussiness) => (
-      <tr key={bussiness.id}>
-        <td style={{ padding: '8px', border: '1px solid #ccc', fontSize: '14px', textAlign: 'left'}}>{bussiness.id}</td>
-        <td style={{ padding: '8px', border: '1px solid #ccc', fontSize: '14px', textAlign: 'left'}}>{bussiness.name}</td>
-        <td style={{ padding: '8px', border: '1px solid #ccc', fontSize: '14px', textAlign: 'left'}}>{bussiness.nit}</td>
-        <td style={{ padding: '8px', border: '1px solid #ccc', fontSize: '14px', textAlign: 'left'}}>{bussiness.mail}</td>
-      </tr>
-    ))}
-  </tbody>
-</table>
+          <table style={{ borderCollapse: 'collapse', width: '100%', tableLayout: 'fixed' }}>
+            <thead style={{ borderBottom: '1px solid #ccc' }}>
+              <tr>
+                <th style={{ width: '14px', padding: '8px', border: '1px solid #ccc', textAlign: 'left', fontSize: '14px'}}>
+                  ID
+                </th>
+                <th style={{ width: '30px', padding: '8px', border: '1px solid #ccc', textAlign: 'left', fontSize: '14px' }}>
+                  Nombre
+                </th>
+                <th style={{ width: '30px', padding: '8px', border: '1px solid #ccc', textAlign: 'left', fontSize: '14px' }}>
+                  NIT
+                </th>
+                <th style={{ width: '30px', padding: '8px', border: '1px solid #ccc', textAlign: 'left', fontSize: '14px' }}>
+                  Email
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {bussiness.map((bussiness) => (
+                <tr key={bussiness.id}>
+                  <td style={{ padding: '8px', border: '1px solid #ccc', fontSize: '14px', textAlign: 'left'}}>{bussiness.id}</td>
+                  <td style={{ padding: '8px', border: '1px solid #ccc', fontSize: '14px', textAlign: 'left'}}>{bussiness.name}</td>
+                  <td style={{ padding: '8px', border: '1px solid #ccc', fontSize: '14px', textAlign: 'left'}}>{bussiness.nit}</td>
+                  <td style={{ padding: '8px', border: '1px solid #ccc', fontSize: '14px', textAlign: 'left'}}>{bussiness.mail}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
         </>
         ):(

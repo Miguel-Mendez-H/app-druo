@@ -111,7 +111,7 @@ const CreateBusinessPanel = () => {
             <Button
               type="submit"
               variant="contained"
-              sx={{ backgroundColor: "#11235A", width: "100%", color: "#F6ECA9", fontFamily: 'Lato'}}
+              sx={{ backgroundColor: "#11235A", width: "100%", color: "#F6ECA9", fontFamily: 'Lato',}}
             >
               Crear Negocio
             </Button>
