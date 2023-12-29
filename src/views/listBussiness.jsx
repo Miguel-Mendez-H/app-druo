@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from "react";
 import apiCall from "../api/apicall";
 import CancelIcon from '@mui/icons-material/Cancel';
-import SortByAlphaIcon from '@mui/icons-material/SortByAlpha';
+
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const ListBussiness = () => {
   const [bussiness, setBussiness] = useState([]);
@@ -19,14 +29,14 @@ const ListBussiness = () => {
   }, []);
 
   const [orderBy, setOrderBy] = useState(null);
-  const [order, setOrder] = useState('asc');
+  const [order, setOrder] = useState('desc');
 
   const handleSort = (column) => {
     if (orderBy === column) {
-      setOrder(order === 'asc' ? 'desc' : 'asc');
+      setOrder((prevOrder) => (prevOrder === 'asc' ? 'desc' : 'asc'));
     } else {
-      setOrderBy(column);
       setOrder('asc');
+      setOrderBy(column);
     }
   };
 
@@ -41,9 +51,32 @@ const ListBussiness = () => {
         return bValue.localeCompare(aValue);
       }
     }
-  
     return [];
   })
+
+  const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+      backgroundColor: "#11235A",
+      color: theme.palette.common.white,
+      cursor: 'pointer',
+      fontSize: 16,
+      fontFamily: 'Lato',
+    },
+    [`&.${tableCellClasses.body}`]: {
+      fontSize: 14,
+      fontFamily: 'Lato',
+      textAlign: 'left',
+    },
+  }));
+
+  const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
+    },
+    '&:last-child td, &:last-child th': {
+      border: 0,
+    },
+  }));
 
   return (
     <div>
@@ -51,29 +84,34 @@ const ListBussiness = () => {
     {bussiness.length > 0 ? (
       <>
         <div style={styles.tableContainer}>
-          <table style={styles.table}>
-            <thead style={styles.tableHeader}>
-              <tr>
-                <th style={styles.tableCell}>ID</th>
-                <th style={{ ...styles.tableCell, display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                  Nombre
-                  <SortByAlphaIcon onClick={() => handleSort('name')} />
-                </th>
-                <th style={styles.tableCell}>NIT</th>
-                <th style={styles.tableCell}>Email</th>
-              </tr>
-            </thead>
-            <tbody>
-              {sortedBussiness.map((bussiness) => (
-                <tr key={bussiness.id}>
-                  <td style={styles.tableCell}>{bussiness.id}</td>
-                  <td style={styles.tableCell}>{bussiness.name}</td>
-                  <td style={styles.tableCell}>{bussiness.nit}</td>
-                  <td style={styles.tableCell}>{bussiness.mail}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 700 }} aria-label="bussinessTable">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell align="left">Id</StyledTableCell>
+                  <StyledTableCell align="left" onClick={() => handleSort('name')}>
+                    Nombre
+                    {(
+                    <span style={styles.orderIcon}>
+                      {order === 'asc' ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                    </span> )}
+                    </StyledTableCell>
+                  <StyledTableCell align="left">NIT</StyledTableCell>
+                  <StyledTableCell align="left">Email</StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {sortedBussiness.map((bussiness) => (
+                  <StyledTableRow key={bussiness.name}>
+                    <StyledTableCell align="right">{bussiness.id}</StyledTableCell>
+                    <StyledTableCell align="right">{bussiness.name}</StyledTableCell>
+                    <StyledTableCell align="right">{bussiness.nit}</StyledTableCell>
+                    <StyledTableCell align="right">{bussiness.mail}</StyledTableCell>
+                  </StyledTableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
         </div>
       </>
     ) : (
@@ -100,23 +138,6 @@ const styles = {
     fontSize: '16px',
     textAlign: 'left',
   },
-  tableContainer: {
-    width: '40%',
-  },
-  table: {
-    borderCollapse: 'collapse',
-    width: '100%',
-    tableLayout: 'fixed',
-  },
-  tableHeader: {
-    borderBottom: '1px solid #ccc',
-  },
-  tableCell: {
-    padding: '8px',
-    border: '1px solid #ccc',
-    textAlign: 'left',
-    fontSize: '14px',
-  },
   centerContainer: {
     display: 'flex',
     flexDirection: 'column',
@@ -129,6 +150,11 @@ const styles = {
     fontSize: '16px',
     textAlign: 'center',
   },
+  orderIcon:{
+    marginLeft: '5px',
+    display: 'inline-block',
+    verticalAlign: 'middle' 
+  }
 };
 
 

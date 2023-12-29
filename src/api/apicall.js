@@ -14,8 +14,6 @@ export default async function apiCall(endpoint, method, data) {
                 },
                 body: data ? JSON.stringify(data) : null,
             });
-
-            console.log(response)
     
             if (!response.ok) {
                 throw new Error(`API request failed with status ${response.status}`);

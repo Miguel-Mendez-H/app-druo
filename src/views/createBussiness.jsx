@@ -63,7 +63,7 @@ const CreateBusinessPanel = () => {
         <Grid container spacing={2}>
           <Grid item xs={2}>
             <label htmlFor="name" style={{ padding: "8px", fontSize: "14px" }}>
-              Nombre
+              Nombre*
             </label>
           </Grid>
           <Grid item xs={10}>
@@ -74,6 +74,7 @@ const CreateBusinessPanel = () => {
               onChange={handleChange}
               fullWidth
               size="small"
+              required
             />
           </Grid>
           <Grid item xs={2}>
